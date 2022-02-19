@@ -1,4 +1,6 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { Restaurant } from 'src/restaurants/entities/restaurant.entity';
+import { User } from 'src/users/entities/user.entity';
 
 @ObjectType()
 export class Review {
@@ -8,6 +10,13 @@ export class Review {
   rating: number;
   @Field(() => String)
   comment: string;
-  // Restaurant   Restaurant? @relation(fields: [restaurantId], references: [id])
-  // restaurantId Int?
+
+  @Field(() => User)
+  User: User;
+  @Field(() => Int)
+  userId: number;
+  @Field(() => Restaurant)
+  Restaurant: Restaurant;
+  @Field(() => Int)
+  restaurantId: number;
 }

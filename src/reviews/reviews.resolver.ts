@@ -13,8 +13,10 @@ export class ReviewsResolver {
   ) {}
 
   @Query(() => [Review])
-  showAllReviews() {
-    return this.prisma.review.findMany({});
+  async showAllReviews() {
+    return await this.prisma.review.findMany({
+      include: { User: true, Restaurant: true },
+    });
   }
 
   // @Mutation(() => Review)
